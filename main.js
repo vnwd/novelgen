@@ -19,6 +19,7 @@ $(document).ready(function() {
       //appending end punct to end sentence every random length of words;
       if (x % Math.floor(Math.random() * 20 + 5) === 0 && x != 0) {
         entry += end.substr(Math.floor(Math.random() * 3), 1);
+        //random paragraph generation
         if (x % Math.floor(Math.random() * 200 + 50) === 0 && x != 0) {
           entry +='<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
         }
