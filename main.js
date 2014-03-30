@@ -13,7 +13,7 @@ $(document).ready(function() {
   function RandWord (numOfWords) {
     var alpha = "abcdefghijklmnopqrstuvwxyz";
     var entry = '&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
-    var end = '.?!'
+    var end = '?!'
     var word = '';
 
     if (!numOfWords) {
@@ -26,7 +26,13 @@ $(document).ready(function() {
 
       //appending end punct to end sentence every random length of words;
       if (x % Math.floor(Math.random() * 20 + 5) === 0 && x != 0) {
-        entry += end.substr(Math.floor(Math.random() * 3), 1);
+        //making '.' and '!'' rarer
+        if (x % Math.floor(Math.random() * 45 + 5) === 0 && x != 0) {
+          entry += end.substr(Math.floor(Math.random() * 2), 1);
+        } else {
+          entry += '.';
+        }
+
         //random paragraph generation
         if (x % Math.floor(Math.random() * 200 + 50) === 0 && x != 0) {
           entry +='<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
