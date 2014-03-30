@@ -16,17 +16,13 @@ $(document).ready(function() {
       //appending word to entry
       entry += word;
 
-      //appending '.' to end sentence every random length of words;
-      if (x === Math.floor(Math.random() * 20) + 5) {
+      //appending end punct to end sentence every random length of words;
+      if (x % Math.floor(Math.random() * 20 + 5) === 0 && x != 0) {
         entry += end.substr(Math.floor(Math.random() * 3), 1);
+        if (x % Math.floor(Math.random() * 200 + 50) === 0 && x != 0) {
+          entry +='<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
+        }
       }
-
-      //creating a new paragraph randomly
-      /*
-      if (x % Math.floor(Math.random() * 100) + 10 === 0) {
-        entry += '.<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
-      }
-      */
 
       //creating space and reseting word
       entry += ' '
@@ -36,6 +32,7 @@ $(document).ready(function() {
         word += alpha.substr(Math.floor(Math.random() * 26), 1);
       }
     }
+
     console.log("The number of words to be generated is " + numOfWords);
     //returning final entry with ending punctuation
     return entry + '.';
