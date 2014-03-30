@@ -9,19 +9,27 @@ $(document).ready(function() {
   });
   function RandWord (numOfWords) {
     var alpha = "abcdefghijklmnopqrstuvwxyz";
-    var entry = '';
+    var entry = '&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
+    var end = '.?!'
     var word = '';
     for (var x = 0; x <= numOfWords; x += 1) {
       //appending word to entry
       entry += word;
+
       //appending '.' to end sentence every random length of words;
       if (x === Math.floor(Math.random() * 20) + 5) {
-        entry += '. ';
+        entry += end.substr(Math.floor(Math.random() * 3), 1);
       }
-      else {
-        entry += ' ';
+
+      //creating a new paragraph randomly
+      /*
+      if (x % Math.floor(Math.random() * 100) + 10 === 0) {
+        entry += '.<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
       }
-      //reseting word
+      */
+
+      //creating space and reseting word
+      entry += ' '
       word = '';
       for (var i = 0; i < Math.floor(Math.random() * 15) +1 ; i += 1) {
         //adding 1 - 15 letters to word
@@ -29,6 +37,7 @@ $(document).ready(function() {
       }
     }
     console.log("The number of words to be generated is " + numOfWords);
-    return entry;
+    //returning final entry with ending punctuation
+    return entry + '.';
   }
 });
