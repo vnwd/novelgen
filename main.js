@@ -2,12 +2,18 @@ $(document).ready(function() {
 
   $('input[name=enter]').click(function() {
     var count = $('input[name=wordCount]').val();
-    var responce = $("#responce");
     var entry = RandWord(count);
-
+    var responce = $("#responce");
+    var copyButton = $("#copyButton")
     responce.html(entry);
+    copyButton.show();
+    copyButton.click(function() {copyToClip(entry.slice(31))});
     return false;
   });
+
+  function copyToClip(entry) {
+    window.prompt("Copy to the clipboard: Cmd/Ctrl+C, Enter", entry);
+  }
   String.prototype.toCharArray = function() {
     return this.split('');
   }
@@ -46,7 +52,6 @@ $(document).ready(function() {
           entry +='<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
         }
       }
-      console.log("Last word was = " + word + " index: " + entry[entry.length - word.length - 2]);
       if (entry[entry.length - word.length - 2] === '.') {
         var letter = entry.length - word.length;
         entryArray = entry.toCharArray();
