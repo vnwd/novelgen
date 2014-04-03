@@ -52,6 +52,7 @@ $(document).ready(function() {
           entry +='<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
         }
       }
+      //capitalization!
       if (entry[entry.length - word.length - 2] === '.') {
         var letter = entry.length - word.length;
         entryArray = entry.toCharArray();
