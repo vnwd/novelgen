@@ -43,7 +43,7 @@ $(document).ready(function () {
           entry += '.';
         }
         //random paragraph generation
-        if (x % Math.floor(Math.random() * 200 + 50) === 0 && x != 0) {
+        if (x % Math.floor(Math.random() * 100 + 50) === 0 && x != 0) {
           entry +='<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
           newPara = true;
         }
