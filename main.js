@@ -5,15 +5,20 @@ $(document).ready(function() {
     var responce = $("#responce");
     var entry = RandWord(count);
 
-    responce.html('');
-    $('#responce').html(entry);
+    responce.html(entry);
     return false;
   });
-
+  String.prototype.toCharArray = function() {
+    return this.split('');
+  }
+  Array.prototype.toString = function() {
+    return this.join('');
+  }
   function RandWord (numOfWords) {
     var alpha = "abcdefghijklmnopqrstuvwxyz";
     var entry = '&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
     var end = '?!'
+    var punc = ',;:-/';
     var word = '';
 
     if (!numOfWords) {
@@ -26,17 +31,27 @@ $(document).ready(function() {
 
       //appending end punct to end sentence every random length of words;
       if (x % Math.floor(Math.random() * 20 + 5) === 0 && x != 0) {
+        //making punctuation somewhat common
+        if (x % Math.floor(Math.random() * 30 + 5) === 0 && x != 0) {
+          entry += punc.substr(Math.floor(Math.random() * 2), 1);
+        }
         //making '.' and '!'' rarer
-        if (x % Math.floor(Math.random() * 45 + 5) === 0 && x != 0) {
+        else if (x % Math.floor(Math.random() * 45 + 5) === 0 && x != 0) {
           entry += end.substr(Math.floor(Math.random() * 2), 1);
         } else {
           entry += '.';
         }
-
         //random paragraph generation
         if (x % Math.floor(Math.random() * 200 + 50) === 0 && x != 0) {
           entry +='<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
         }
+      }
+      console.log("Last word was = " + word + " index: " + entry[entry.length - word.length - 2]);
+      if (entry[entry.length - word.length - 2] === '.') {
+        var letter = entry.length - word.length;
+        entryArray = entry.toCharArray();
+        entryArray[entry.length - word.length] = entryArray[entry.length - word.length].toUpperCase();
+        entry = entryArray.join('');
       }
 
       //creating space and reseting word
@@ -49,7 +64,12 @@ $(document).ready(function() {
     }
 
     console.log("The number of words to be generated is " + numOfWords);
-    //returning final entry with ending punctuation
-    return entry + '.';
+    //returning final entry with ending punctuation && cap the first letter
+    var finish = entry.length-2;
+    entryArray = entry.toCharArray();
+    entryArray[finish] = '.';
+    entryArray[31] = entryArray[31].toUpperCase();
+    entry = entryArray.toString();
+    return entry;
   }
 });
