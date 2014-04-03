@@ -19,6 +19,8 @@ $(document).ready(function () {
     var end = '?!'
     var punc = ',;:-/';
     var word = '';
+    var newPara = true;
+    var entryArray = [];
 
     if (!numOfWords) {
       entry = "<h1>fuck you<h1>";
@@ -43,6 +45,7 @@ $(document).ready(function () {
         //random paragraph generation
         if (x % Math.floor(Math.random() * 200 + 50) === 0 && x != 0) {
           entry +='<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
+          newPara = true;
         }
       }
       //capitalization!
@@ -58,7 +61,12 @@ $(document).ready(function () {
       word = '';
       for (var i = 0; i < Math.floor(Math.random() * 15) +1 ; i += 1) {
         //adding 1 - 15 letters to word
-        word += alpha.substr(Math.floor(Math.random() * 26), 1);
+        if (newPara) {
+          word += (alpha.substr(Math.floor(Math.random() * 26), 1)).toUpperCase();
+          newPara = false;
+        } else {
+          word += alpha.substr(Math.floor(Math.random() * 26), 1);
+        }
       }
     }
 
@@ -67,7 +75,6 @@ $(document).ready(function () {
     var finish = entry.length-2;
     entryArray = entry.toCharArray();
     entryArray[finish] = '.';
-    entryArray[31] = entryArray[31].toUpperCase();
     entry = entryArray.toString();
     return entry;
   }
