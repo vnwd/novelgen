@@ -3,12 +3,12 @@ body {
 }
 #app {
   position: absolute;
-  left: 25%;
+  left: 10%;
   border: .25em solid #5D016D;
   border-radius: 5px;
   padding: .05%;
   padding-bottom: 35%;
-  width: 50%;
+  width: 80%;
   background-color: #DC0055;
 }
 
