@@ -1,25 +1,18 @@
-$(document).ready(function() {
-
-  $('input[name=enter]').click(function() {
-    var count = $('input[name=wordCount]').val();
-    var entry = RandWord(count);
-    var responce = $("#responce");
-    var copyButton = $("#copyButton")
-    responce.html(entry);
-    copyButton.show();
-    copyButton.click(function() {copyToClip(entry.slice(31))});
-    return false;
-  });
-
+$(document).ready(function () {
+  'use strict';
+  //set up
   function copyToClip(entry) {
     window.prompt("Copy to the clipboard: Cmd/Ctrl+C, Enter", entry);
   }
-  String.prototype.toCharArray = function() {
+  
+  String.prototype.toCharArray = function () {
     return this.split('');
   }
-  Array.prototype.toString = function() {
+  
+  Array.prototype.toString = function () {
     return this.join('');
   }
+
   function RandWord (numOfWords) {
     var alpha = "abcdefghijklmnopqrstuvwxyz";
     var entry = '&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
@@ -78,4 +71,17 @@ $(document).ready(function() {
     entry = entryArray.toString();
     return entry;
   }
+
+  //the action
+  $('input[name=enter]').click(function () {
+    var count = $('input[name=wordCount]').val();
+    var entry = RandWord(count);
+    var responce = $("#responce");
+    var copyButton = $("#copyButton");
+
+    responce.html(entry);
+    copyButton.show();
+    copyButton.click(function () {copyToClip(entry.slice(31))});
+    return false;
+  });
 });
