@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  'use strict';
+  'use strict'
   //set up
   function copyToClip(entry) {
     window.prompt("Copy to the clipboard: Cmd/Ctrl+C, Enter", entry);
@@ -19,14 +19,15 @@ $(document).ready(function () {
     var end = '?!'
     var punc = ',;:-/';
     var word = '';
-    var newPara = true;
+    var newParagraph = true;
     var entryArray = [];
+    var x = 0;
 
     if (!numOfWords) {
       entry = "<h1>fuck you<h1>";
     }
 
-    for (var x = 0; x <= numOfWords; x += 1) {
+    for (x = 0; x <= numOfWords; x += 1) {
       //appending word to entry
       entry += word;
 
@@ -45,7 +46,7 @@ $(document).ready(function () {
         //random paragraph generation
         if (x % Math.floor(Math.random() * 100 + 50) === 0 && x != 0) {
           entry +='<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
-          newPara = true;
+          newParagraph = true;
         }
       }
       //capitalization!
@@ -59,11 +60,11 @@ $(document).ready(function () {
       //creating space and reseting word
       entry += ' '
       word = '';
-      for (var i = 0; i < Math.floor(Math.random() * 15) +1 ; i += 1) {
+      for (x = 0; x < Math.floor(Math.random() * 15) +1 ; x += 1) {
         //adding 1 - 15 letters to word
-        if (newPara) {
+        if (newParagraph) {
           word += (alpha.substr(Math.floor(Math.random() * 26), 1)).toUpperCase();
-          newPara = false;
+          newParagraph = false;
         } else {
           word += alpha.substr(Math.floor(Math.random() * 26), 1);
         }

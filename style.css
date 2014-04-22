@@ -1,25 +1,10 @@
-body {
-  background-color: #8F04AB;
-}
-#app {
-  position: absolute;
-  left: 10%;
-  border: .25em solid #5D016D;
-  border-radius: 5px;
-  padding: .05%;
-  padding-bottom: 35%;
-  width: 80%;
-  background-color: #DC0055;
-}
-
-#appHead {
-  font-family: Futura, Sans Serif;
-}
-#responce {
-  padding: 2%;
-  text-align: left;
-
-}
-#appHead, #appIn {
+  body{
+  background-color: white;
   text-align: center;
 }
+  #responce {
+    position: absolute;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: left;
+  }
